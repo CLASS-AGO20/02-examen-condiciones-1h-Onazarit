@@ -25,6 +25,19 @@ export default class App {
         return(costo);
     }
 
+    puedeCircular(dia, terminacion){
+        if((dia == 1) && (terminacion == 0))
+            return(true);
+        else if((dia == 2) && (terminacion == 1))
+            return(true);
+        else if(((dia == 3) || (dia == 4)) && terminacion == 2)
+            return(true);
+        else if(terminacion > 2)
+            return(true);
+        else
+            return(false);
+    }
+
 }
 
 let app = new App();
@@ -39,3 +52,10 @@ console.log("El auto rentado recorrio 40km, el costo es: "+app.costoRenta(40));
 console.log("El auto rentado recorrio 60km, el costo es: "+app.costoRenta(60));
 console.log("El auto rentado recorrio 100km, el costo es: "+app.costoRenta(100));
 console.log("El auto rentado recorrio 205km, el costo es: "+app.costoRenta(205));
+
+// Prueba metodo puedeCircular
+console.log("¿Matricula 0 en Lunes circula?: "+app.puedeCircular(1,0));
+console.log("¿Matricula 1 en Martes circula?: "+app.puedeCircular(2,1));
+console.log("¿Matricula 2 en Jueves circula?: "+app.puedeCircular(4,2));
+console.log("¿Matricula 3 en Lunes circula?: "+app.puedeCircular(1,4));
+console.log("¿Matricula 2 en Lunes circula?: "+app.puedeCircular(1,2));
